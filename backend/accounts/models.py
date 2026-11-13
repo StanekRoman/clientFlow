@@ -1,4 +1,6 @@
 
+from typing import ClassVar
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.functions import Lower
@@ -13,7 +15,9 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    objects = CustomUserManager()  # pyright: ignore[reportAssignmentType]
+    # autopep8: off
+    objects: ClassVar[CustomUserManager] = CustomUserManager() # pyright: ignore[reportIncompatibleVariableOverride]
+    # autopep8: on
 
     class Meta:
         constraints = [
