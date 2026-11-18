@@ -1,0 +1,33 @@
+[project]
+name = "clientflow-backend"
+version = "0.1.0"
+description = "Backend for ClientFlow project management application"
+authors = [
+    {name = "Roman Stanek",email = "roman@stanek-roman.cz"}
+]
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "django (>=6.1.3,<6.2)",
+    "psycopg (>=3.3.9,<4.0.0)",
+    "python-dotenv (>=1.2.4,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+package-mode = false
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.2.0,<10.0.0)",
+    "pytest-django (>=4.14.0,<5.0.0)"
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py"]
+testpaths = ["accounts", "customers", "projects"]
